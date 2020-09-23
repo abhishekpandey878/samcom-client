@@ -1,0 +1,68 @@
+<!-- <h2>Hello! {{currentUser.userName}}</h2> -->
+<p><a [routerLink]="['/login']" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-out"></span> Log out</a></p>
+
+<table>
+    <thead>
+      <tr>
+        <th>userName</th>
+        <th>Mobile</th>
+        <th>E-Mail</th>
+        <th>Designation</th>
+        <th>Gender</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let data of employee">
+         <td>{{data.userName}}</td>
+         <td>{{data.mobile}}</td>
+         <td>{{data.email}}</td>
+         <td>{{data.designation}}</td>
+         <td>{{data.gender}}</td>
+         <td><button (click)="deleteEmp(data.email)">delete</button></td>
+         <td><button (click)="editEmp(data._id)">edit</button></td>
+       </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <form [formGroup]="addEmployeeForm" (ngSubmit)="saveEmployee()">
+    <div class="form-group">
+        <label for="userName">User Name</label>
+            <input type="text" formControlName="userName" class="form-control"/>
+            <!-- <div *ngIf="submitted && details.userName.errors">
+                <div *ngIf="details.userName.errors.required">User Name is required</div>
+            </div> -->
+    </div>
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="number" formControlName="mobile" class="form-control">
+        <!-- <div *ngIf="submitted && details.mobile.errors">
+            <div *ngIf="details.mobile.errors.required">Mobile Number is required</div>
+        </div> -->
+    </div>
+    <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="text" formControlName="email" class="form-control">
+            <!-- <div *ngIf="submitted && details.email.errors">
+                <div *ngIf="details.email.errors.required">E-Mail is required</div>
+            </div> -->
+    </div>
+    <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" formControlName="designation" class="form-control">
+            <!-- <div *ngIf="submitted && details.designation.errors">
+                <div *ngIf="details.designation.errors.required">designation is required</div>
+            </div> -->
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="text" formControlName="gender" class="form-control">
+        <!-- <div *ngIf="submitted && details.gender.errors">
+            <div *ngIf="details.gender.errors.required">gender is required</div>
+        </div> -->
+</div>
+    <div class="form-group">
+        <button mat-button color="primary">Add Employee</button>
+        </div>
+</form>
